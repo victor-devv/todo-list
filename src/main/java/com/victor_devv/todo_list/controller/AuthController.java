@@ -3,7 +3,6 @@ package com.victor_devv.todo_list.controller;
 import com.victor_devv.todo_list.controller.advice.ApiResponseBuilder;
 import com.victor_devv.todo_list.controller.advice.jsend.JSendResponse;
 import com.victor_devv.todo_list.domain.dto.LoginRequest;
-import com.victor_devv.todo_list.domain.dto.LoginResponse;
 import com.victor_devv.todo_list.domain.dto.UserRequest;
 import com.victor_devv.todo_list.service.UserService;
 import io.micrometer.core.annotation.Timed;
@@ -36,9 +35,9 @@ public class AuthController {
     @PostMapping("/login")
     @Timed(value = "user.login", description = "Time taken to authenticate a user")
     @Operation(summary = "Authenticate a user")
-    public ResponseEntity<LoginResponse> authenticate(
+    public ResponseEntity<JSendResponse> authenticate(
             @Valid @RequestBody LoginRequest request
     ) {
-        return ResponseEntity.ok(userService.authenticate(request));
+        return ApiResponseBuilder.success(userService.authenticate(request));
     }
 }

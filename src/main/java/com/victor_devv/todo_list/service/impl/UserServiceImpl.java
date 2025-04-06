@@ -99,6 +99,7 @@ public class UserServiceImpl implements UserService {
                 .orElseThrow();
         var jwtToken = jwtService.generateToken(user);
         return LoginResponse.builder()
+                .user(userMapper.toDto(user))
                 .token(jwtToken)
                 .build();
     }
