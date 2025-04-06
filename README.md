@@ -32,7 +32,7 @@ A comprehensive **Todo List API** built with **Spring Boot**, **Spring Security 
 
 ## **🛠 Technologies**
 - **Backend**:
-    - Java 17, Spring Boot 3.2.x
+    - Java 23, Spring Boot 3.4.4
     - Spring Security (JWT)
     - Hibernate, PostgreSQL
     - Flyway (Database Migrations)
@@ -40,16 +40,12 @@ A comprehensive **Todo List API** built with **Spring Boot**, **Spring Security 
     - MapStruct (DTO Mappings)
     - Swagger (API Documentation)
 
-- **Infrastructure**:
-    - Docker (Containerization)
-    - Prometheus + Grafana (Monitoring)
-
 ---
 
 ## **⚙ Setup & Installation**
 ### **Prerequisites**
-- Java 17+
-- PostgreSQL 14+
+- Java 23
+- PostgreSQL 17
 - Maven 3.9+
 - Docker (optional)
 
