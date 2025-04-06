@@ -14,8 +14,6 @@ A comprehensive **Todo List API** built with **Spring Boot**, **Spring Security 
 7. [Error Handling](#error-handling)
 8. [Testing](#testing)
 9. [Deployment](#deployment)
-10. [Contributing](#contributing)
-11. [License](#license)
 
 ---
 
@@ -67,7 +65,7 @@ Update `application.properties`:
 spring.datasource.url=jdbc:postgresql://localhost:5432/todo_db
 spring.datasource.username=postgres
 spring.datasource.password=yourpassword
-spring.flyway.locations=classpath:db/migration
+spring.flyway.locations=classpath:database/migrations
 ```
 
 ### **3. Run the Application**
@@ -159,7 +157,3 @@ java -jar target/todo-list-1.0.0.jar
 docker build -t todo-api .
 docker run -p 8080:8080 todo-api
 ```
-
-### **3. Kubernetes (Optional)**
-See `k8s/` directory for deployment manifests.
-
