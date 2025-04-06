@@ -22,6 +22,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import jakarta.persistence.EntityNotFoundException;
 
+import java.util.HashMap;
+
 @Slf4j
 @Service
 @RequiredArgsConstructor
@@ -81,7 +83,11 @@ public class UserServiceImpl implements UserService {
         User savedUser = userRepository.save(user);
         log.info("created user with id: {}", savedUser.getId());
 
-        var jwtToken = jwtService.generateToken(user);
+        HashMap<String, Object> claims = new HashMap<String, Object>();
+        claims.put("user_id", user.getId());
+        claims.put("user_authorities", user.getAuthorities());
+
+        var jwtToken = jwtService.generateToken(claims, user);
         return LoginResponse.builder()
                 .user(userMapper.toDto(savedUser))
                 .token(jwtToken)
@@ -97,7 +103,12 @@ public class UserServiceImpl implements UserService {
         );
         var user = userRepository.findByEmail(request.getEmail())
                 .orElseThrow();
-        var jwtToken = jwtService.generateToken(user);
+
+        HashMap<String, Object> claims = new HashMap<String, Object>();
+        claims.put("user_id", user.getId());
+        claims.put("user_authorities", user.getAuthorities());
+
+        var jwtToken = jwtService.generateToken(claims, user);
         return LoginResponse.builder()
                 .user(userMapper.toDto(user))
                 .token(jwtToken)
