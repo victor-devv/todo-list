@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 import javax.sql.DataSource;
 
@@ -18,6 +19,7 @@ import javax.sql.DataSource;
 @Configuration
 @EnableTransactionManagement
 @EnableJpaRepositories(basePackages = "com.victor_devv.todo_list.repository")
+@EntityScan(basePackages = "com.victor_devv.todo_list.domain.entity")
 public class DatabaseConfig {
 
     @Bean
